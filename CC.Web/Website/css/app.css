@@ -1,0 +1,14 @@
+.progress {
+    position: relative;
+}
+
+.progress span {
+    position: absolute;
+    display: block;
+    width: 100%;
+    color: black;
+ }
+ 
+ h4 {
+     margin-top: 0;
+ }
