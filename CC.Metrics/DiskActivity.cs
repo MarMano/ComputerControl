@@ -51,6 +51,11 @@ namespace CC.Metrics
             _updateTimer.Stop();
         }
 
+        public int Count()
+        {
+            return DriveInfo.GetDrives().Count(x => x.DriveType == DriveType.Fixed);
+        }
+
         private void UpdateTimerOnElapsed(object sender, ElapsedEventArgs elapsedEventArgs)
         {
             var driveInfo = DriveInfo.GetDrives().Where(x => x.DriveType == DriveType.Fixed).ToList();

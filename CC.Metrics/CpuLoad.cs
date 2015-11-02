@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Timers;
 using CC.Models;
 using CC.Models.EventArguments;
@@ -45,6 +46,11 @@ namespace CC.Metrics
         public void Stop()
         {
             _updateTimer.Stop();
+        }
+
+        public int Count()
+        {
+            return _instances.Count(x => !x.Contains("Total"));
         }
 
         private void UpdateTimerOnElapsed(object sender, ElapsedEventArgs elapsedEventArgs)

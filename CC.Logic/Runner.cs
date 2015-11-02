@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Threading;
+using CC.Logic.Commands;
 using CC.Metrics;
+using CC.Models;
 using CC.Web;
 using Newtonsoft.Json;
 
@@ -70,7 +72,18 @@ namespace CC.Logic
 
         private void _webSocket_NewMessage(object sender, WebSocketServer.EventArguments.NewMessageEventArgs args)
         {
-            Console.Write(args.Message);
+            var message = JsonConvert.DeserializeObject<Message>(args.Message);
+            var type = Type.GetType("CC.Logic.Commands" + "." + message.Type + "Command");
+            if (type == null)
+                return;
+            
+            var command = Activator.CreateInstance(type) as BaseCommand;
+            if (command == null)
+                return;
+
+            _webSocket.SendMessage(args.Client, command.Handle(message.Arguments));
+
+            _clients.Add(args.Client);
         }
 
         private void _webSocket_ClientDisconnected(object sender, WebSocketServer.EventArguments.ClientConnectionEventArgs args)
@@ -82,7 +95,7 @@ namespace CC.Logic
         private void _webSocket_ClientConnected(object sender, WebSocketServer.EventArguments.ClientConnectionEventArgs args)
         {
             Console.WriteLine("Client Connected");
-            _clients.Add(args.Client);
+            
         }
 
         private void _cpuLoad_Update(object sender, Models.EventArguments.CpuUpdateEventArgs args)

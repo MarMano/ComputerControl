@@ -43,6 +43,7 @@
     <Compile Include="EventArguments\CpuUpdateEventArgs.cs" />
     <Compile Include="EventArguments\DiskUpdateEvent.cs" />
     <Compile Include="EventArguments\RamUpdateEventArgs.cs" />
+    <Compile Include="Message.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SingleCpu.cs" />
     <Compile Include="SingleDisk.cs" />

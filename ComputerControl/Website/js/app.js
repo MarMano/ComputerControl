@@ -7,16 +7,18 @@ var Communication = {
 	
 	Socket: null,
 	
-	Init: function() {
-	    Communication.Socket.open = Communication.OnOpen;
+	Init: function () {
+
+	    Communication.Socket = new WebSocket("ws://" + window.location.hostname + ":5050");
 	    Communication.Socket.onmessage = Communication.OnMessage;
-		Communication.Socket = new WebSocket("ws://" + window.location.hostname + ":5050");
-	},
-	
-	OnOpen: function(event) {
-	    console.log("Connection is open");
+	    Communication.Socket.onopen = Communication.OnOpen;
 	},
 
+	OnOpen: function (event)
+	{
+	    Communication.Send({ Type: "Init" });
+	},
+	
 	OnMessage: function(event)
 	{
 		var data = JSON.parse(event.data);
@@ -25,7 +27,7 @@ var Communication = {
 
 	Send: function(data)
 	{
-		
+		Communication.Socket.send(JSON.stringify(data));
 	}
 
 
@@ -64,5 +66,9 @@ var HandleData = {
 			$("#DiskActivity-" + element.Id).css("width", element.Usage + "%")
 			$("#DiskActivityText-" + element.Id).text(element.Letter + ": " + element.Usage + "%");
 		});
+	},
+
+	SystemInfo: function(data) {
+	    console.log(data);
 	}
 }
