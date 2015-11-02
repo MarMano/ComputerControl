@@ -7,22 +7,28 @@ var Communication = {
 	
 	Socket: null,
 	
-	Init: function()
-	{
+	Init: function() {
+	    Communication.Socket.open = Communication.OnOpen;
+	    Communication.Socket.onmessage = Communication.OnMessage;
 		Communication.Socket = new WebSocket("ws://" + window.location.hostname + ":5050");
-		Communication.Socket.onmessage = Communication.OnMessage;
 	},
 	
+	OnOpen: function(event) {
+	    console.log("Connection is open");
+	},
+
 	OnMessage: function(event)
 	{
 		var data = JSON.parse(event.data);
 		window["HandleData"][data.Type](data.Data);		
 	},
-	
+
 	Send: function(data)
 	{
 		
-	}	
+	}
+
+
 };
 
 var HandleData = {

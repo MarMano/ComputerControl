@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 using System.Windows.Forms;
 using CC.Logic;
-using Application = System.Windows.Application;
+using IWshRuntimeLibrary;
 
 namespace ComputerControl
 {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application
+    public partial class App
     {
         public App()
         {
@@ -24,12 +18,25 @@ namespace ComputerControl
             var runner = new Runner();
             runner.Start();
 
+            var shell = new WshShellClass();
+
             var trayIcon = new NotifyIcon();
 
-            var menuItemExit = new MenuItem()
+            var menuItemExit = new MenuItem
+            {
+                Index = 1,
+                Text = "Exit"
+            };
+
+            var menuItemStartup = new MenuItem()
             {
                 Index = 0,
-                Text = "Exit"
+                Text = "Start at boot"
+            };
+
+            menuItemStartup.Click += (sender, args) =>
+            {
+
             };
 
             menuItemExit.Click += (sender, args) =>
@@ -39,10 +46,11 @@ namespace ComputerControl
                 Current.Shutdown();
             };
 
-            trayIcon.ContextMenu = new ContextMenu()
+            trayIcon.ContextMenu = new ContextMenu
             {
                 MenuItems =
                 {
+                    menuItemStartup,
                     menuItemExit
                 }
             };
@@ -52,6 +60,8 @@ namespace ComputerControl
             trayIcon.Visible = true;
 
             
+
+
         }
     }
 }

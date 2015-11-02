@@ -31,8 +31,10 @@ namespace CC.Web
                     thread.Start();
                     Thread.Sleep(1);
                 }
-                catch (SocketException)
-                {}
+                catch (SocketException e)
+                {
+
+                }
                 
             }
         }
