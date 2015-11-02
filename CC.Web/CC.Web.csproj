@@ -46,62 +46,62 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Website\css\app.css">
+    <EmbeddedResource Include="Website\css\app.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Website\css\bootstrap-theme.css">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Website\css\bootstrap-theme.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Website\css\bootstrap-theme.min.css">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Website\css\bootstrap-theme.min.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Website\css\bootstrap.css">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Website\css\bootstrap.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Website\css\bootstrap.min.css">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Website\css\bootstrap.min.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Website\fonts\glyphicons-halflings-regular.svg">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Website\fonts\glyphicons-halflings-regular.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Website\index.html">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Website\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Website\js\app.js">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Website\js\app.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Website\js\bootstrap.js">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Website\js\bootstrap.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Website\js\bootstrap.min.js">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Website\js\bootstrap.min.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Website\js\jquery-2.1.4.min.js">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Website\js\jquery-2.1.4.min.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Website\js\npm.js">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Website\js\npm.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Website\css\bootstrap-theme.css.map">
+    <EmbeddedResource Include="Website\css\bootstrap-theme.css.map">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Website\css\bootstrap.css.map">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Website\css\bootstrap.css.map">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Website\fonts\glyphicons-halflings-regular.eot">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Website\fonts\glyphicons-halflings-regular.eot">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Website\fonts\glyphicons-halflings-regular.ttf">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Website\fonts\glyphicons-halflings-regular.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Website\fonts\glyphicons-halflings-regular.woff">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Website\fonts\glyphicons-halflings-regular.woff">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Website\fonts\glyphicons-halflings-regular.woff2">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Website\fonts\glyphicons-halflings-regular.woff2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

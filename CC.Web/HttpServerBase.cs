@@ -1,20 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace CC.Web
 {
     public abstract class HttpServerBase
     {
-        protected readonly int _port;
-        protected TcpListener _listener;
-        protected readonly bool _isActive = true;
+        private readonly int _port;
+        protected TcpListener Listener;
+        protected bool IsActive = true;
 
         protected HttpServerBase(int port)
         {
@@ -23,15 +19,21 @@ namespace CC.Web
 
         public void Listen()
         {
-            _listener = new TcpListener(IPAddress.Any, _port);
-            _listener.Start();
-            while (_isActive)
+            Listener = new TcpListener(IPAddress.Any, _port);
+            Listener.Start();
+            while (IsActive)
             {
-                TcpClient s = _listener.AcceptTcpClient();
-                HttpProcessor processor = new HttpProcessor(s, this);
-                Thread thread = new Thread(processor.process);
-                thread.Start();
-                Thread.Sleep(1);
+                try
+                {
+                    TcpClient s = Listener.AcceptTcpClient();
+                    HttpProcessor processor = new HttpProcessor(s, this);
+                    Thread thread = new Thread(processor.process);
+                    thread.Start();
+                    Thread.Sleep(1);
+                }
+                catch (SocketException)
+                {}
+                
             }
         }
 

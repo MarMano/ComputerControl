@@ -16,7 +16,6 @@ namespace CC.Logic
         private WebSocketServer.WebSocketServer _webSocket;
         private List<TcpClient> _clients;
         private CCHttpServer _httpServer;
-        private Thread _httpServerThread;
 
         public void Start()
         {
@@ -39,8 +38,6 @@ namespace CC.Logic
             _diskActivity.Update += _diskActivity_Update;
 
             _httpServer = new CCHttpServer();
-            _httpServerThread = new Thread(_httpServer.Listen);
-            _httpServerThread.Start();
 
             Console.WriteLine("Server is ready. Press Q to exit."); 
         }
@@ -51,7 +48,7 @@ namespace CC.Logic
             _ramUsage.Stop();
             _diskActivity.Stop();
             _webSocket.Stop();
-            _httpServerThread.Abort();
+            _httpServer.Stop();
             Console.WriteLine("\nSystem shutting down!");
         }
 
