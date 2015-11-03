@@ -61,14 +61,28 @@ var HandleData = {
 	
 	DiskInfo: function(data)
 	{
-		$(data).each(function(i, element)
-		{
-			$("#DiskActivity-" + element.Id).css("width", element.Usage + "%")
+		$(data).each(function(i, element) {
+		    $("#DiskActivity-" + element.Id).css("width", element.Usage + "%");
 			$("#DiskActivityText-" + element.Id).text(element.Letter + ": " + element.Usage + "%");
 		});
 	},
 
 	SystemInfo: function(data) {
-	    console.log(data);
+	    
+	    for (var i = 0; i < data.Cpu; i++) {
+	        var content = $("#CpuProgressTemplate").html();
+
+	        $("#CpuLoadContainer").append(content.replace("ID", i, "g").replace("ID-INC", i + 1));
+	    }
+
+        for (var j = 0; j < data.Disk; j++) {
+            var content = $("#DiskActivityTemplate").html();
+
+            if (data.Disk == 1) {
+                content = content.replace("6", "12");
+            }
+
+            $("#DiskActivityContainer").append(content.replace("ID", j).replace("DiskActivityText-ID", "DiskActivityText-" + j));
+        }
 	}
 }

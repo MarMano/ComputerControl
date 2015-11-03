@@ -15,130 +15,75 @@
 		<script type="text/javascript" src="js/app.js"></script>
 	</head>
 	<body>
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-12">
-					<h3>Cpu Load</h3>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-6">
-					<div class="progress">
-						<div id="CpuLoad-0" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-							<span id="CpuLoadText-0">Cpu #1: 0%</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6">
-					<div class="progress">
-						<div id="CpuLoad-1" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-							<span id="CpuLoadText-1">Cpu #2: 0%</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-6">
-					<div class="progress">
-						<div id="CpuLoad-2" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-							<span id="CpuLoadText-2">Cpu #3: 0%</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6">
-					<div class="progress">
-						<div id="CpuLoad-3" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-							<span id="CpuLoadText-3">Cpu #4: 0%</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-6">
-					<div class="progress">
-						<div id="CpuLoad-4" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-							<span id="CpuLoadText-4">Cpu #5: 0%</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6">
-					<div class="progress">
-						<div id="CpuLoad-5" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-							<span id="CpuLoadText-5">Cpu #6: 0%</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-6">
-					<div class="progress">
-						<div id="CpuLoad-6" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-							<span id="CpuLoadText-6">Cpu #7: 0%</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6">
-					<div class="progress">
-						<div id="CpuLoad-7" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-							<span id="CpuLoadText-7">Cpu #8: 0%</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-12">
-					<div class="progress">
-						<div id="CpuLoad-Total" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-							<span id="CpuLoadText-Total">Total Load: 0%</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-			<div class="row">
-				<h3>Ram Usage</h3>
-			</div>
-			<div class="row">
-				<div class="col-sm-12">
-					<div class="progress">
-						<div id="Ram-Percent" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-							<span id="Ram-PercentText">Ram Usage: 0%</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-4">
-					<h4>Total: <span id="Ram-Total">0.00 GB</span></h4>
-				</div>
-				<div class="col-sm-4">
-					<h4>Used: <span id="Ram-Used">0.00 GB</span></h4>
-				</div>
-				<div class="col-sm-4">
-					<h4>Free: <span id="Ram-Free">0.00 GB</span></h4>
-				</div>
-			</div>
-			
-			
-			<div class="row">
-				<h3>Disk Activity</h3>
-			</div>
-			<div class="row">
-				<div class="col-sm-6">
-					<div class="progress">
-						<div id="DiskActivity-0" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-							<span id="DiskActivityText-0">C: 0%</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6">
-					<div class="progress">
-						<div id="DiskActivity-1" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-							<span id="DiskActivityText-1">E: 0%</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+	<div class="container">
+	    <div class="row">
+	        <div class="col-sm-12">
+	            <h3>Cpu Load</h3>
+	        </div>
+	    </div>
+	    <div class="row" id="CpuLoadContainer">	        
+	    </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="progress">
+                    <div id="CpuLoad-Total" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                        <span id="CpuLoadText-Total">Total Load: 0%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+	    <div class="row">
+	        <h3>Ram Usage</h3>
+	    </div>
+	    <div class="row">
+	        <div class="col-sm-12">
+	            <div class="progress">
+	                <div id="Ram-Percent" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+	                    <span id="Ram-PercentText">Ram Usage: 0%</span>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="row">
+	        <div class="col-sm-4">
+	            <h4>Total: <span id="Ram-Total">0.00 GB</span></h4>
+	        </div>
+	        <div class="col-sm-4">
+	            <h4>Used: <span id="Ram-Used">0.00 GB</span></h4>
+	        </div>
+	        <div class="col-sm-4">
+	            <h4>Free: <span id="Ram-Free">0.00 GB</span></h4>
+	        </div>
+	    </div>
+
+
+	    <div class="row">
+	        <h3>Disk Activity</h3>
+	    </div>
+	    <div class="row" id="DiskActivityContainer">
+	    </div>
+	</div>
+
+	<div style="visibility: hidden" id="CpuProgressTemplate">
+	    <div class="col-sm-6">
+	        <div class="progress">
+	            <div id="CpuLoad-ID" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+	                <span id="CpuLoadText-ID">Cpu #ID-INC: 0%</span>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+
+	<div style="visibility: hidden" id="DiskActivityTemplate">
+        <div class="col-sm-6">
+            <div class="progress">
+                <div id="DiskActivity-ID" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                    <span id="DiskActivityText-ID">-: 0%</span>
+                </div>
+            </div>
+        </div>
+	</div>
 	</body>
 </html>
