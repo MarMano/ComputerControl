@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
-using System.Threading;
 using CC.Logic.Commands;
 using CC.Metrics;
 using CC.Models;

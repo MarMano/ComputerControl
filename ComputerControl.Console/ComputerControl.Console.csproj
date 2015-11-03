@@ -54,10 +54,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CodeSnips\WebSocketServer\WebSocketServer.csproj">
-      <Project>{f6892689-b32f-4adb-b6e7-144843151ee8}</Project>
-      <Name>WebSocketServer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CC.Logic\CC.Logic.csproj">
       <Project>{671b36bc-39e6-478e-84ac-ef7f7b038457}</Project>
       <Name>CC.Logic</Name>

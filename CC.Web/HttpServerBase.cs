@@ -12,6 +12,8 @@ namespace CC.Web
         protected TcpListener Listener;
         protected bool IsActive = true;
 
+        private ManualResetEvent tcpCLientConnected = new ManualResetEvent(false);
+
         protected HttpServerBase(int port)
         {
             _port = port;
@@ -23,20 +25,23 @@ namespace CC.Web
             Listener.Start();
             while (IsActive)
             {
-                try
-                {
-                    TcpClient s = Listener.AcceptTcpClient();
-                    HttpProcessor processor = new HttpProcessor(s, this);
-                    Thread thread = new Thread(processor.process);
-                    thread.Start();
-                    Thread.Sleep(1);
-                }
-                catch (SocketException e)
-                {
-
-                }
-                
+                tcpCLientConnected.Reset();
+                Listener.BeginAcceptTcpClient(AcceptTcpClient, Listener);
+                tcpCLientConnected.WaitOne();
             }
+        }
+
+        private void AcceptTcpClient(IAsyncResult ar)
+        {
+            var listener = (TcpListener) ar.AsyncState;
+            var client = listener.EndAcceptTcpClient(ar);
+
+            HttpProcessor processor = new HttpProcessor(client, this);
+            Thread thread = new Thread(processor.process);
+            thread.IsBackground = true;
+            thread.Start();
+
+            tcpCLientConnected.Set();
         }
 
         public abstract void handleGETRequest(HttpProcessor p);

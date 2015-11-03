@@ -14,6 +14,7 @@ namespace CC.Web
         public CCHttpServer(int port = 8080) : base(port)
         {
             _listener = new Thread(Listen);
+            _listener.IsBackground = true;
             _listener.Start();
         }
 
@@ -23,25 +24,26 @@ namespace CC.Web
             {
                 p.writeSuccess();
                 p.outputStream.WriteLine(File.ReadAllText("Website/index.html"));
+                return;
             }
 
-            if (File.Exists("Website" + p.http_url))
+            if (!File.Exists("Website" + p.http_url))
             {
-                if(p.http_url.EndsWith(".css"))
-                    p.writeSuccess("text/css");
-                else
-                    p.writeSuccess();
-                
-                p.outputStream.WriteLine(File.ReadAllText("Website" + p.http_url));
+                p.writeFailure();
+                return;
             }
+
+            if(p.http_url.EndsWith(".css"))
+                p.writeSuccess("text/css");
+            else
+                p.writeSuccess();
+                
+            p.outputStream.WriteLine(File.ReadAllText("Website" + p.http_url));
         }
 
         public void Stop()
         {
             IsActive = false;
-            Listener.Stop();
-            Listener.Server.Close();
-            _listener.Abort();
         }
 
         public override void handlePOSTRequest(HttpProcessor p, StreamReader inputData)

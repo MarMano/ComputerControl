@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CC.Models", "CC.Models\CC.M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputerControl.Console", "ComputerControl.Console\ComputerControl.Console.csproj", "{BE712E30-6B95-4A85-8A4F-35EBAE4289F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSocketServer", "..\CodeSnips\WebSocketServer\WebSocketServer.csproj", "{F6892689-B32F-4ADB-B6E7-144843151EE8}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CC.Logic", "CC.Logic\CC.Logic.csproj", "{671B36BC-39E6-478E-84AC-EF7F7B038457}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CC.Web", "CC.Web\CC.Web.csproj", "{8306EC4B-CBBD-4ACA-BB8F-259F51E761CB}"
@@ -39,10 +37,6 @@ Global
 		{BE712E30-6B95-4A85-8A4F-35EBAE4289F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE712E30-6B95-4A85-8A4F-35EBAE4289F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE712E30-6B95-4A85-8A4F-35EBAE4289F4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F6892689-B32F-4ADB-B6E7-144843151EE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F6892689-B32F-4ADB-B6E7-144843151EE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F6892689-B32F-4ADB-B6E7-144843151EE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F6892689-B32F-4ADB-B6E7-144843151EE8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{671B36BC-39E6-478E-84AC-EF7F7B038457}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{671B36BC-39E6-478E-84AC-EF7F7B038457}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{671B36BC-39E6-478E-84AC-EF7F7B038457}.Release|Any CPU.ActiveCfg = Release|Any CPU

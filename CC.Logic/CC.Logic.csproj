@@ -41,6 +41,10 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WebSocket, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebSocket.1.0.0.1\lib\net45\WebSocket.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\BaseCommand.cs" />
@@ -49,10 +53,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CodeSnips\WebSocketServer\WebSocketServer.csproj">
-      <Project>{f6892689-b32f-4adb-b6e7-144843151ee8}</Project>
-      <Name>WebSocketServer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CC.Metrics\CC.Metrics.csproj">
       <Project>{42c701d1-1f24-4b87-8087-0d20fbfd01ff}</Project>
       <Name>CC.Metrics</Name>
