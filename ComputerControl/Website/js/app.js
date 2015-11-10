@@ -10,11 +10,11 @@ var Communication = {
 	Init: function () {
 
 	    Communication.Socket = new WebSocket("ws://" + window.location.hostname + ":5050");
-	    Communication.Socket.onmessage = Communication.OnMessage;
 	    Communication.Socket.onopen = Communication.OnOpen;
+	    Communication.Socket.onmessage = Communication.OnMessage;
 	},
 
-	OnOpen: function (event)
+	OnOpen: function ()
 	{
 	    Communication.Send({ Type: "Init" });
 	},
@@ -29,8 +29,6 @@ var Communication = {
 	{
 		Communication.Socket.send(JSON.stringify(data));
 	}
-
-
 };
 
 var HandleData = {
@@ -53,10 +51,10 @@ var HandleData = {
 		
 		$("#Ram-PercentText").text("Ram Usage: " + percentage + "%");
 		$("#Ram-Percent").css("width", percentage + "%");
-		
-		$("#Ram-Total").text(parseFloat(data.Total / 1024).toFixed(2) + " GB")
-		$("#Ram-Used").text(parseFloat(used / 1024).toFixed(2) + " GB")
-		$("#Ram-Free").text(parseFloat(data.Avaliable / 1024).toFixed(2) + " GB")
+
+	    $("#Ram-Total").text(parseFloat(data.Total / 1024).toFixed(2) + " GB");
+	    $("#Ram-Used").text(parseFloat(used / 1024).toFixed(2) + " GB");
+	    $("#Ram-Free").text(parseFloat(data.Avaliable / 1024).toFixed(2) + " GB");
 	},
 	
 	DiskInfo: function(data)
@@ -68,21 +66,23 @@ var HandleData = {
 	},
 
 	SystemInfo: function(data) {
-	    
-	    for (var i = 0; i < data.Cpu; i++) {
-	        var content = $("#CpuProgressTemplate").html();
 
-	        $("#CpuLoadContainer").append(content.replace("ID", i, "g").replace("ID-INC", i + 1));
+	    var content;
+
+	    for (var i = 0; i < data.Cpu; i++) {
+	        content = $("#CpuProgressTemplate").html();
+
+	        $("#CpuLoadContainer").append(content.replace(new RegExp("ID", "g"), i).replace(new RegExp("ID-INC", "g"), i + 1));
 	    }
 
         for (var j = 0; j < data.Disk; j++) {
-            var content = $("#DiskActivityTemplate").html();
+            content = $("#DiskActivityTemplate").html();
 
-            if (data.Disk == 1) {
+            if (data.Disk === 1) {
                 content = content.replace("6", "12");
             }
 
-            $("#DiskActivityContainer").append(content.replace("ID", j).replace("DiskActivityText-ID", "DiskActivityText-" + j));
+            $("#DiskActivityContainer").append(content.replace(new RegExp("ID", "g"), j));
         }
 	}
 }

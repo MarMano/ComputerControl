@@ -23,7 +23,6 @@ namespace CC.Logic
             _clients = new List<TcpClient>();
 
             _webSocket = new WebSocketServer.WebSocketServer(5050);
-            _webSocket.ClientConnected += _webSocket_ClientConnected;
             _webSocket.ClientDisconnected += _webSocket_ClientDisconnected;
             _webSocket.NewMessage += _webSocket_NewMessage;
 
@@ -39,8 +38,6 @@ namespace CC.Logic
             _diskActivity.Update += _diskActivity_Update;
 
             _httpServer = new CCHttpServer();
-
-            Console.WriteLine("Server is ready. Press Q to exit."); 
         }
 
         public void Stop()
@@ -50,7 +47,6 @@ namespace CC.Logic
             _diskActivity.Stop();
             _webSocket.Stop();
             _httpServer.Stop();
-            Console.WriteLine("\nSystem shutting down!");
         }
 
         private void _diskActivity_Update(object sender, Models.EventArguments.DiskUpdateEvent args)
@@ -80,21 +76,18 @@ namespace CC.Logic
             if (command == null)
                 return;
 
-            _webSocket.SendMessage(args.Client, command.Handle(message.Arguments));
+            if (typeof (InitCommand) == command.GetType())
+                _clients.Add(args.Client);
 
-            _clients.Add(args.Client);
+            var returnContent = command.Handle(message.Arguments);
+
+            if(!string.IsNullOrEmpty(returnContent))
+                _webSocket.SendMessage(args.Client, returnContent);
         }
 
         private void _webSocket_ClientDisconnected(object sender, WebSocketServer.EventArguments.ClientConnectionEventArgs args)
         {
-            Console.WriteLine("Client Disconnected");
             _clients.Remove(args.Client);
-        }
-
-        private void _webSocket_ClientConnected(object sender, WebSocketServer.EventArguments.ClientConnectionEventArgs args)
-        {
-            Console.WriteLine("Client Connected");
-            
         }
 
         private void _cpuLoad_Update(object sender, Models.EventArguments.CpuUpdateEventArgs args)
