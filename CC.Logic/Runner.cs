@@ -5,6 +5,8 @@ using CC.Logic.Commands;
 using CC.Metrics;
 using CC.Models;
 using CC.Web;
+using ManoSoftware.WebSocketServer;
+using ManoSoftware.WebSocketServer.EventArguments;
 using Newtonsoft.Json;
 
 namespace CC.Logic
@@ -14,7 +16,7 @@ namespace CC.Logic
         private CpuLoad _cpuLoad;
         private RamUsage _ramUsage;
         private DiskActivity _diskActivity;
-        private WebSocketServer.WebSocketServer _webSocket;
+        private WebSocketServer _webSocket;
         private List<TcpClient> _clients;
         private CCHttpServer _httpServer;
 
@@ -22,7 +24,7 @@ namespace CC.Logic
         {
             _clients = new List<TcpClient>();
 
-            _webSocket = new WebSocketServer.WebSocketServer(5050);
+            _webSocket = new WebSocketServer(5050);
             _webSocket.ClientDisconnected += _webSocket_ClientDisconnected;
             _webSocket.NewMessage += _webSocket_NewMessage;
 
@@ -65,7 +67,7 @@ namespace CC.Logic
             }
         }
 
-        private void _webSocket_NewMessage(object sender, WebSocketServer.EventArguments.NewMessageEventArgs args)
+        private void _webSocket_NewMessage(object sender, NewMessageEventArgs args)
         {
             var message = JsonConvert.DeserializeObject<Message>(args.Message);
             var type = Type.GetType("CC.Logic.Commands" + "." + message.Type + "Command");
@@ -85,7 +87,7 @@ namespace CC.Logic
                 _webSocket.SendMessage(args.Client, returnContent);
         }
 
-        private void _webSocket_ClientDisconnected(object sender, WebSocketServer.EventArguments.ClientConnectionEventArgs args)
+        private void _webSocket_ClientDisconnected(object sender, ClientConnectionEventArgs args)
         {
             _clients.Remove(args.Client);
         }
